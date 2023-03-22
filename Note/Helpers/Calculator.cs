@@ -4,8 +4,9 @@ public class Calculator
 {
     public int Add(string numbersInput)
     {
+        var delimiters = new char[] { ',', '\n' };
         var parsedNumbers = numbersInput
-            .Split(new char[]{','},StringSplitOptions.RemoveEmptyEntries)
+            .Split(delimiters,StringSplitOptions.RemoveEmptyEntries)
             .Select(m => int.Parse(m));
         return parsedNumbers.Sum();
 

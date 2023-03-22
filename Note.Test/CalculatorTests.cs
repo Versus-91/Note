@@ -26,4 +26,14 @@ public class CalculatorTests
         var result = calculator.Add(calculation);
         result.Should().Be(expected);
     }
+    [Theory]
+    [InlineData("1,2,3,4",10)]
+    [InlineData("1\n2\n10",13)]
+    public void Add_AddNumbers_WithNEwLine_WhenStringISValid(string calculation,int expected)
+
+    {
+        var calculator = new Calculator();
+        var result = calculator.Add(calculation);
+        result.Should().Be(expected);
+    }
 }
