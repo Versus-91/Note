@@ -4,7 +4,14 @@ public class Calculator
 {
     public int Add(string numbersInput)
     {
-        var delimiters = new char[] { ',', '\n' };
+        char[] delimiters = new char[] { ',', '\n' };
+        if (numbersInput.StartsWith("//"))
+        {
+            var splittedByNewLine = numbersInput.Split(new[] { '\n' }, 2);
+            var delimitter = splittedByNewLine[0].Replace("//",string.Empty).Single();
+            delimiters = delimiters.Append(delimitter).ToArray();
+            numbersInput = splittedByNewLine[1];
+        }
         var parsedNumbers = numbersInput
             .Split(delimiters,StringSplitOptions.RemoveEmptyEntries)
             .Select(m => int.Parse(m));
