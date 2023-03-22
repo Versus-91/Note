@@ -4,7 +4,7 @@ public class Calculator
 {
     public int Add(string numbersInput)
     {
-        var parsedNumbers = numbersInput.Split(",");
+        var parsedNumbers = numbersInput.Split(new char[]{','},StringSplitOptions.RemoveEmptyEntries);
         if (!parsedNumbers.Any())
         {
             return 0;
@@ -12,11 +12,6 @@ public class Calculator
 
         if (parsedNumbers.Length == 1)
         {
-            if (parsedNumbers[0].Length == 0)
-            {
-                return 0;
-            }
-
             return int.Parse(parsedNumbers[0]);
         }
         return int.Parse(parsedNumbers[0])+int.Parse(parsedNumbers[1]);
